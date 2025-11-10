@@ -69,50 +69,50 @@
             </div>
             <div class="lifes">
             </div>
-            <div class="rank" style="width: 350px; height: 350px">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 15%;">Posição</th>
-                            <th>Jogador</th>
-                            <th>Pontos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        // Inclui o arquivo de conexão
-                        require '_php/conectar.php';
+        </div>
+        <div class="rank" style="width: 350px; height: 350px; position: fixed; top: 15px; right:15px; color: white; text-align: center; z-index: 2; display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Posição</th>
+                        <th>Jogador</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Inclui o arquivo de conexão
+                    require '_php/conectar.php';
 
-                        // Busca o Top 10 do ranking
-                        $sql = "SELECT name, score FROM Rank ORDER BY score DESC LIMIT 10";
-                        $result = mysqli_query($conn, $sql);
+                    // Busca o Top 10 do ranking
+                    $sql = "SELECT name, score FROM Rank ORDER BY score DESC LIMIT 3";
+                    $result = mysqli_query($conn, $sql);
 
-                        if (mysqli_num_rows($result) > 0) {
-                            $posicao = 1;
-                            $medalhas = ['🥇', '🥈', '🥉']; // Medalhas para o Top 3
+                    if (mysqli_num_rows($result) > 0) {
+                        $posicao = 1;
+                        $medalhas = ['🥇', '🥈', '🥉']; // Medalhas para o Top 3
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                // Define a medalha ou a posição normal
-                                $display_posicao = ($posicao <= 3) ? '<span class="medal">' . $medalhas[$posicao - 1] . '</span>' : $posicao . 'º';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            // Define a medalha ou a posição normal
+                            $display_posicao = ($posicao <= 3) ? '<span class="medal">' . $medalhas[$posicao - 1] . '</span>' : $posicao . 'º';
 
-                                echo "<tr>";
-                                echo "<td>" . $display_posicao . "</td>";
-                                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                echo "<td>" . number_format($row['score'], 0, ',', '.') . "</td>"; // Formata os pontos
-                                echo "</tr>";
-                                $posicao++;
-                            }
-                        } else {
-                            // Mensagem para quando a tabela está vazia
-                            echo '<tr><td colspan="3">Nenhum recorde encontrado. Jogue para ser o primeiro!</td></tr>';
+                            echo "<tr>";
+                            echo "<td>" . $display_posicao . "</td>";
+                            echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                            echo "<td>" . number_format($row['score'], 0, ',', '.') . "</td>"; // Formata os pontos
+                            echo "</tr>";
+                            $posicao++;
                         }
+                    } else {
+                        // Mensagem para quando a tabela está vazia
+                        echo '<tr><td colspan="3">Nenhum recorde encontrado. Jogue para ser o primeiro!</td></tr>';
+                    }
 
-                        // Fecha a conexão
-                        mysqli_close($conn);
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                    // Fecha a conexão
+                    mysqli_close($conn);
+                    ?>
+                </tbody>
+            </table>
         </div>
 
         <img src="_imagens/clouds.png" class="clouds">
