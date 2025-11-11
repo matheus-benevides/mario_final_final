@@ -13,10 +13,10 @@
     $telefone = $_POST['telefone'];
 
     if ($turma == null) {
-        $turma = "SEM TURMA";
+        $turma = "Não Registrado";
     }
     if ($telefone == null) {
-        $telefone = "SEM TELEFONE";
+        $telefone = "Não Registrado";
     }
 
     $inserindo = "INSERT INTO jogador_aluno(
@@ -33,5 +33,5 @@
 
     mysqli_query($conn,$inserindo);
     mysqli_close($conn);
-    header('Location: ../index.php');
+    header('Location: ../paginaJogo/cadastro.html');
     ?>

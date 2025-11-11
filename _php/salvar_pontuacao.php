@@ -71,6 +71,10 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_stmt_close($stmt_insert);
 }
 
+$deletando = "DELETE FROM jogador_aluno WHERE jogador_nome = '$name'";
+
+mysqli_query($conn,$deletando);
+
 mysqli_stmt_close($stmt_select);
 mysqli_close($conn);
 ?>

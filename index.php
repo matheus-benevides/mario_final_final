@@ -29,8 +29,12 @@
 
             $executando = mysqli_query($conn, $mostrar);
 
-            while ($linha = mysqli_fetch_array($executando)) {
-                echo "<option value='" . $linha['jogador_nome'] . "'>" . $linha['jogador_nome'] . "</option>";
+            if (mysqli_num_rows($executando) > 0) {
+                while ($linha = mysqli_fetch_array($executando)) {
+                    echo "<option value='" . $linha['jogador_nome'] . "'>" . $linha['jogador_nome'] . "</option>";
+                }
+            } else {
+                Header("Location: paginaJogo/cadastro.html");
             }
 
             ?>
@@ -70,9 +74,9 @@
             <div class="lifes">
             </div>
         </div>
-        <div class="rank" style="width: 350px; height: 350px; position: fixed; top: 15px; right:15px; color: white; text-align: center; z-index: 2; display: none;">
-            <table>
-                <thead>
+        <div class="rank" style="width: 100%; position: fixed; color: white; z-index: 3; display: flex; justify-content:flex-end;">
+            <table style="width: 150px; height: 150px; text-align:center; padding: 10px;">
+                <thead style="color: black;">
                     <tr>
                         <th style="width: 15%;">Posição</th>
                         <th>Jogador</th>
