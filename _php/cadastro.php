@@ -6,6 +6,7 @@
     $port = 3312;
 
     $conn = mysqli_connect($host, $user, $password, $database, $port);
+    // $conn = mysqli_connect($host, $user, $password, $database);
 
     $nome = $_POST['nome'];
     $convAluno = $_POST['conv/aluno'];

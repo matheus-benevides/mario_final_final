@@ -14,31 +14,35 @@
 
 <body>
     <div class="name-screen">
-        <h2>Digite seu Nome</h2>
-        <select name="playerNameInput" id="playerNameInput" style="padding: 10px;">
+        <!-- <select name="playerNameInput" id="playerNameInput" style="padding: 10px;"> -->
             <?php
             $host = 'localhost';
             $user = 'root';
             $password = '';
             $database = 'crossverse_db';
             $port = 3312;
-
+            
             $conn = mysqli_connect($host, $user, $password, $database, $port);
-
+            // $conn = mysqli_connect($host, $user, $password, $database);
+            
             $mostrar = "SELECT * FROM jogador_aluno";
-
+            
             $executando = mysqli_query($conn, $mostrar);
-
+            
             if (mysqli_num_rows($executando) > 0) {
+                echo "<h2>Selecione o Jogador</h2>";
+                echo "<select name='playerNameInput' id='playerNameInput' style='padding: 10px;'>";
                 while ($linha = mysqli_fetch_array($executando)) {
                     echo "<option value='" . $linha['jogador_nome'] . "'>" . $linha['jogador_nome'] . "</option>";
                 }
+                echo "</select>";
             } else {
-                Header("Location: paginaJogo/cadastro.html");
+                echo "<h2>Digite seu Nome</h2>";
+                echo "<input type='text' id='playerNameInput' placeholder='Seu nome aqui...' maxlength='20'>";
             }
 
             ?>
-        </select>
+        <!-- </select> -->
         <!-- <input type="text" id="playerNameInput" placeholder="Seu nome aqui..." maxlength="20"> -->
         <button onclick="salvarNomeEContinuar()">Entrar</button>
     </div>
