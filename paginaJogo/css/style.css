@@ -464,6 +464,9 @@ body {
     font-size: 100px;
     color: var(--corDestaque);
 }
+.caixa-resultado-txt{
+    text-align: center;
+}
 
 .caixa-resultado-txt strong {
     font-size: 20px;
