@@ -354,7 +354,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 50%;
-    max-width: 550px;
+    max-width: 750px;
     height: 600px;
     border: 2px solid var(--corBordas);
     background-color: var(--corFundo);

@@ -56,6 +56,7 @@
                 <tr>
                     <th style="width: 15%;">Posição</th>
                     <th>Jogador</th>
+                    <th>Turma</th>
                     <th>Pontos</th>
                 </tr>
             </thead>
@@ -65,7 +66,7 @@
                 require '../_php/conectar.php';
 
                 // Busca o Top 10 do ranking
-                $sql = "SELECT name, score FROM Rank ORDER BY score DESC LIMIT 10";
+                $sql = "SELECT name, score, turma FROM Rank ORDER BY score DESC LIMIT 10";
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -79,6 +80,7 @@
                         echo "<tr>";
                         echo "<td>" . $display_posicao . "</td>";
                         echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['turma']) . "</td>";
                         echo "<td>" . number_format($row['score'], 0, ',', '.') . "</td>"; // Formata os pontos
                         echo "</tr>";
                         $posicao++;

@@ -19,6 +19,14 @@ if (!isset($dados->name) || !isset($dados->score)) {
 $name = $dados->name;
 $score = $dados->score;
 
+$selectAluno = "select * from jogador_aluno where idplayer = '$name'";
+$selectEspcAluno = "SELECT jogador_turma, jogador_tipo, jogador_nome, jogador_telefone FROM jogador_aluno WHERE '$name'";
+$exec = mysqli_query($conn,$selectEspcAluno);
+
+$execResultado = mysqli_fetch_array($exec);
+
+$execTurma = $execResultado['jogador_turma'];
+$name = $execResultado['jogador_nome'];
 
 // 1. INSERE NA TABELA DE HISTÓRICO (scores)
 $sql_scores = "INSERT INTO scores (name, score) VALUES (?, ?)";
@@ -60,9 +68,9 @@ if (mysqli_num_rows($result) > 0) {
     }
 } else {
     // JOGADOR NÃO EXISTE: Insere o novo recorde.
-    $sql_insert = "INSERT INTO Rank (name, score) VALUES (?, ?)";
+    $sql_insert = "INSERT INTO Rank (name, score, turma) VALUES (?, ?, ?)";
     $stmt_insert = mysqli_prepare($conn, $sql_insert);
-    mysqli_stmt_bind_param($stmt_insert, "si", $name, $score);
+    mysqli_stmt_bind_param($stmt_insert, "sis", $name, $score, $execTurma);
     if (mysqli_stmt_execute($stmt_insert)) {
         echo json_encode(['status' => 'success', 'message' => 'Primeira pontuação registrada no Rank com sucesso!']);
     } else {

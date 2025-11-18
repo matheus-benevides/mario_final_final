@@ -37,7 +37,7 @@ const moedaPega = document.getElementById("moeda");
 let personagemAtual = "";
 
 
-let nomeJogador = "";
+let idplayer = "";
 
 let segundos = 0;
 let moedasColetadas = 0;
@@ -67,7 +67,7 @@ function salvarNomeEContinuar() {
         alert("Por favor, digite um nome para continuar!");
         return;
     }
-    nomeJogador = inputNome.value;
+    idplayer = inputNome.value;
 
     document.querySelector('.name-screen').style.display = 'none';
     document.querySelector('.game-board').style.display = 'block';
@@ -111,7 +111,7 @@ let unlockInputs = {
     marioKart: [],
     shadowSecreto: [],
     wario: [],
-    roberto: [],
+    // roberto: [],
     matheus: []
 };
 
@@ -123,7 +123,7 @@ function checkUnlock(key) {
         marioKart: { seq: ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'], id: 'marioKart-char' },
         shadowSecreto: { seq: ['ArrowRight', 'ArrowRight'], id: 'shadowSecreto-char' },
         wario: { seq: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'], id: 'wario-char' },
-        roberto: { seq: ['r', 'o', 'b', 'e', 'r', 't', 'o'], id: 'roberto-char' },
+        // roberto: { seq: ['r', 'o', 'b', 'e', 'r', 't', 'o'], id: 'roberto-char' },
         matheus: { seq: ['p', 'a', 'l', 'm', 'e', 'i', 'r', 'a', 's'], id: 'matheus-char' }
     };
 
@@ -152,8 +152,8 @@ function checkUnlock(key) {
 //FUNÇÃO PARA SALVAR PONTUAÇÃO NO BANCO DE DADOS
 async function salvarPontuacao(pontosFinais) {
     const dados = {
-        name: nomeJogador,
-        score: pontosFinais
+        name: idplayer,
+        score: pontosFinais,
     };
 
     try {
@@ -487,8 +487,9 @@ function selecionarPersonagem(selecao, interacaoUsuario) {
             // Adicione um som para o wario se tiver
             break;
         case "roberto":
-            mario.src = "_imagens/image.png";
-            mario.style.transform = "scaleX(1)";
+            mario.src = "_media/gifs-principais/robertogirando.gif";
+            mario.style.transform = "scaleX(-1)";
+            mario.style.width = "270px";
             break;
         case "matheus":
             mario.src = "_imagens/matheus.png";
@@ -832,29 +833,29 @@ function iniciarGame() {
             goku.style.display = "none";
             dragonair.style.display = "none";
         }
-        if (pontos >= 1000) {
-            cloud.style.animationDuration = "0.2s";
-            estrelas.style.animationDuration = "0.1s";
-            lifes = 100000000000000;
-            pipe.style.animationDuration = "0.1s";
-            coin.style.animationDuration = "0.1s";
-            coin.style.display = "none";
-        }
-        if (pontos >= 1050 && pontos <= 1500) {
-            document.querySelector(".made-in-heaven").style.display = "flex";
-            if (toca2 == true) {
-                musica.src = "_media/sounds/madeinheaven.mp3";
-                musica.removeAttribute("loop");
-                toca2 = false;
-            }
-            coin.style.display = "none";
-            pipe.style.display = "none";
-            mario.style.display = "none";
-            gameBoard.style.borderBottom = "none";
-            if (pontos >= 1060 || pontos >= 95145) {
-                window.location.reload(true);
-            }
-        }
+        // if (pontos >= 100000) {
+        //     cloud.style.animationDuration = "0.2s";
+        //     estrelas.style.animationDuration = "0.1s";
+        //     lifes = 100000000000000;
+        //     pipe.style.animationDuration = "0.1s";
+        //     coin.style.animationDuration = "0.1s";
+        //     coin.style.display = "none";
+        // }
+        // if (pontos >= 100050 && pontos <= 100500) {
+        //     document.querySelector(".made-in-heaven").style.display = "flex";
+        //     if (toca2 == true) {
+        //         musica.src = "_media/sounds/madeinheaven.mp3";
+        //         musica.removeAttribute("loop");
+        //         toca2 = false;
+        //     }
+        //     coin.style.display = "none";
+        //     pipe.style.display = "none";
+        //     mario.style.display = "none";
+        //     gameBoard.style.borderBottom = "none";
+        //     if (pontos >= 1060 || pontos >= 95145) {
+        //         window.location.reload(true);
+        //     }
+        // }
 
 
         //Verifica se o "Mario" arrelou no cano se sim aparece a tela de morte e some com o cano

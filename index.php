@@ -33,7 +33,7 @@
                 echo "<h2>Selecione o Jogador</h2>";
                 echo "<select name='playerNameInput' id='playerNameInput' style='padding: 10px;'>";
                 while ($linha = mysqli_fetch_array($executando)) {
-                    echo "<option value='" . $linha['jogador_nome'] . "'>" . $linha['jogador_nome'] . "</option>";
+                    echo "<option value='" . $linha['idplayer'] . "'>" . $linha['jogador_nome'] . "</option>";
                 }
                 echo "</select>";
             } else {
@@ -94,6 +94,7 @@
 
                     // Busca o Top 10 do ranking
                     $sql = "SELECT name, score FROM Rank ORDER BY score DESC LIMIT 3";
+    
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
@@ -150,6 +151,7 @@
                 <img src="_media/gifs-startscreen/batman_Dance.gif" class="batman" data-character="batman">
                 <img src="_media/gifs-startscreen/luffy-inicio.gif" class="luffy" data-character="luffy">
                 <img src="_media/gifs-startscreen/sonic_dance.gif" class="sonic" data-character="sonic">
+                <img src="_media/gifs-principais/robertogirando.gif" class="roberto" data-character="roberto" style="transform: scaleX(-1);">
 
                 <img src="_media/gifs-principais/mario-walking.gif" class="personagem-secreto"
                     data-character="marioSecreto" id="marioSecreto-char">
@@ -162,7 +164,7 @@
 
                 <img src="_media/wario.gif" class="personagem-secreto" data-character="wario" id="wario-char"
                     style="transform: scaleX(-1);">
-                <img src="_imagens/image.png" class="personagem-secreto" data-character="roberto" id="roberto-char">
+                <!-- <img src="_media/gifs-principais/robertogirando.gif" class="personagem-secreto" data-character="roberto" id="roberto-char"> -->
                 <img src="_imagens/matheus.png" class="personagem-secreto" data-character="matheus" id="matheus-char">
             </div>
             <button class="olhar" onclick="olhar()">Olhar fundo</button>

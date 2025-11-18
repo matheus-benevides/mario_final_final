@@ -32,7 +32,8 @@
             '$telefone'
         );";
 
-    mysqli_query($conn,$inserindo);
+    mysqli_query($conn, $inserindo);
+
     mysqli_close($conn);
     header('Location: ../paginaJogo/cadastro.html');
     ?>
