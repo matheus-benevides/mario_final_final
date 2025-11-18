@@ -353,8 +353,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    max-width: 750px;
+    width: 650px;
     height: 600px;
     border: 2px solid var(--corBordas);
     background-color: var(--corFundo);
@@ -395,7 +394,7 @@ body {
 
 }
 
-.caixa-cad-input input:focus{
+.caixa-cad-input input:focus {
     background: transparent;
     border-radius: 10px;
     border-bottom: 2px solid var(--corLinks);
@@ -406,7 +405,7 @@ body {
     width: 100px;
     height: 50px;
     font-size: 15px;
-    font-weight: bold; 
+    font-weight: bold;
     color: #FFF;
     background: var(--corLinks);
     border-radius: var(--arredondamento);
@@ -434,4 +433,54 @@ body {
     .navbar-links {
         visibility: hidden;
     }
+}
+
+.caixa-resultado {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.caixa-resultado-conteudo {
+    background: var(--corFundo);
+    width: 50%;
+    max-width: 550px;
+    height: 350px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    border: 2px solid var(--corDestaque);
+}
+
+.caixa-resultado-icone {
+    font-size: 100px;
+    color: var(--corDestaque);
+}
+
+.caixa-resultado-txt strong {
+    font-size: 20px;
+    color: var(--corDestaque);
+}
+
+#btnFecha {
+    background: none;
+    border-radius: 50%;
+    scale: 1.3;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    color: var(--corDestaque);
+}
+
+#btnFecha:hover {
+    color: var(--corTexto);
 }

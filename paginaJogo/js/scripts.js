@@ -32,3 +32,14 @@ function alunoConvidado(){
         document.getElementById("telefone").removeAttribute("required");
     }
 }
+
+function validar() {
+    document.querySelector(".caixa-resultado").style.display = "flex";
+
+    document.getElementById("btnFecha").addEventListener("click", () => {
+        document.querySelector(".caixa-resultado").style.display = "none";
+        document.querySelector(".caixa-form-cad").submit();
+    });
+
+    return false;
+}

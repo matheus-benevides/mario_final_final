@@ -489,7 +489,7 @@ function selecionarPersonagem(selecao, interacaoUsuario) {
         case "roberto":
             mario.src = "_media/gifs-principais/robertogirando.gif";
             mario.style.transform = "scaleX(-1)";
-            mario.style.width = "270px";
+            mario.style.width = "150px";
             break;
         case "matheus":
             mario.src = "_imagens/matheus.png";
